@@ -1,0 +1,58 @@
+{
+                        "UPSSecurity": {
+                          "UsernameToken": {
+                            "Username": "[YOUR USERNAME]",
+                            "Password": "[YOUR PASSWORD]"
+                          },
+                          "ServiceAccessToken": {
+                            "AccessLicenseNumber": "[YOUR ACCESS LICENSE NUMBER]"
+                          }
+                        },
+                     	"PickupCreationRequest": {
+                         "ReferenceNumber" : "'.$order->id.'",
+                         "Request": {
+                     			"TransactionReference": {
+                     				"CustomerContext": "'.Auth::user()->id.'"
+                     			}
+                     		},
+                     		"RatePickupIndicator": "Y",
+                     		"TaxInformationIndicator": "Y",
+                         "Shipper": {
+                             "Account": {
+                               "AccountNumber": "[YOUR ACCOUNT NUMBER]",
+                               "AccountCountryCode": "FR"
+                             }
+                         },
+                     		"PickupDateInfo": {
+                     			"CloseTime": "'.$from->close.'",
+                     			"ReadyTime": "'.$from->open.'",
+                     			"PickupDate": "'.$pickupDate.'"
+                     		},
+                     		"PickupAddress": {
+                     			"CompanyName": ".'.$from->company.'",
+                     			"ContactName": "'.$from->name ." ".$from->name2.'",
+                     			"AddressLine": "'.$from->street1.'",
+                     			"City": "'.$from->city.'",
+                     			"StateProvince": "NA",
+                     			"PostalCode": "'.$from->zip.'",
+                     			"CountryCode": "FR",
+                     			"ResidentialIndicator": "N",
+                     			"Phone": {
+                     				"Number": "'.$from->phone.'"
+                     			}
+                     		},
+                     		"AlternateAddressIndicator": "N",
+                     		"TotalWeight": {
+                     			"Weight": "'.$parcel->weight.'",
+                     			"UnitOfMeasurement": "KGS"
+                     		},
+                         "PickupPiece": {
+                           "ServiceCode": "003",
+                           "Quantity": "'.$quantity.'",
+                           "DestinationCountryCode": "FR",
+                           "ContainerCode": "01"
+                         },
+                     		"OverweightIndicator": "N",
+                     		"PaymentMethod": "01"
+                     	}
+                     }
